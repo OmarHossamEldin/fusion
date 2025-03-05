@@ -1,0 +1,73 @@
+services:
+  fusion:
+    container_name: fusion
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: fusion:latest
+    restart: always
+    environment:
+      HOST: '0.0.0.0'
+      PORT: '3000'
+      DATABASE_CLIENT: 'postgres'
+      DATABASE_HOST: 'fusionDB'
+      DATABASE_PORT: '5432'
+      DATABASE_NAME: 'fusion'
+      DATABASE_USERNAME: 'root'
+      DATABASE_PASSWORD: 'P@ssw0rd@admin'
+      NODE_ENV: 'development'
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    ports:
+      - "3000:3000"
+    networks:
+      - fusion
+    depends_on:
+      - fusionDB
+
+  fusionDB:
+        container_name: fusionDB
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: P@ssw0rd@admin
+            POSTGRES_DB: fusion
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./fusion-data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U root -d fusion -h localhost"]
+            interval: 30s
+            retries: 3
+            start_period: 30s
+            timeout: 10s
+        networks:
+          - fusion
+  fusionPgadmin:
+        container_name: fusionPgadmin
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: P@ssw0rd@admin
+        ports:
+            - "5000:80"
+        healthcheck:
+            test: ["CMD", "wget", "--spider", "http://localhost:80"]
+            interval: 30s
+            retries: 3
+            start_period: 30s
+            timeout: 10s
+        networks:
+          - fusion
+
+volumes:
+  fusion-data:
+
+networks:
+  fusion:
+    name: Fusion
+    driver: bridge

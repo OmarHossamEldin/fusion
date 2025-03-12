@@ -1,15 +1,7 @@
 #!/bin/bash
 
-echo "cp .env file ..."
+echo "extract values from environment variables .env file ..."
 envsubst < /var/www/.env.example > /var/www/.env
-
-echo "installing dependances..."
-npm install
-
-
-echo "building assets..."
-npm run strapi build
-
 
 
 echo "Starting server..."

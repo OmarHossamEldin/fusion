@@ -6,4 +6,6 @@ envsubst < /var/www/.env.example > /var/www/.env
 
 echo "Starting server..."
 
-pm2-runtime start /var/www/ecosystem.config.js
+pm2 start ecosystem.config.js --only fusionDevelop
+
+pm2 logs fusionDevelop

@@ -21,6 +21,12 @@ services:
     working_dir: /var/www
     ports:
       - "3000:3000"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:80"]
+      interval: 30s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
     networks:
       - fusion
     depends_on:

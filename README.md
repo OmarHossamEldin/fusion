@@ -29,6 +29,7 @@ This repository contains a **Strapi** application configured to run in a **Docke
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
+![alt text](image.png)
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose**: [Install Docker Compose](https://docs.docker.com/compose/install/)
@@ -38,21 +39,12 @@ Before you begin, ensure you have the following installed:
 
 ## Getting Started
 
-### 1. Clone the Repository
-
-Clone this repository to your local machine:
-
-```bash
-git clone https://github.com/OmarHossamEldin/fusion
-cd fusion
-```
-
-### 2.  Configure Environment Variables
+### 1.  Configure Environment Variables
 
  - on docker-compose.yaml file
  - .env.example
 
-### 3.  Build and Run the Docker Containers
+### 2.  Build and Run the Docker Containers
 
 ```bash
 docker-compose up

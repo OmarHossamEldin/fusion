@@ -16,7 +16,7 @@ RUN npm install
 
 RUN chmod -R 777 ./*
 
-RUN npm run strapi build
+RUN npm run build
 
 EXPOSE 3000
 

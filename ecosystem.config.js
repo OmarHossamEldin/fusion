@@ -8,9 +8,14 @@ module.exports = {
     {
       name: 'fusionDevelop',
       script: 'npm',
-      args: 'run develop',
+      args: 'run strapi develop',
       watch: ['src'],
-      ignore_watch: ['node_modules', '**/*'], 
+      ignore_watch: [
+        'node_modules',
+        '**/*',
+        'types',
+        'fusion-data/**'
+      ],
     }
   ]
 };

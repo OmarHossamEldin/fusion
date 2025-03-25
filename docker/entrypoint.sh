@@ -8,4 +8,4 @@ echo "Starting server..."
 
 pm2 start ecosystem.config.js --only fusionDevelop
 
-pm2 logs fusionDevelop
+pm2 logs fusionDevelop --lines 50 

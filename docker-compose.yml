@@ -16,13 +16,16 @@ services:
       DATABASE_USERNAME: 'root'
       DATABASE_PASSWORD: 'P@ssw0rd@admin'
       NODE_ENV: 'development'
+      GETHUB_USER: "user@example.com"
+      GETHUB_PASSWORD: "2UMXe<NPaaJm7uL*"
+
     volumes:
       - ./:/var/www
     working_dir: /var/www
     ports:
       - "3000:3000"
     healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:80"]
+      test: ["CMD", "wget", "--spider", "http://localhost:3000/h"]
       interval: 30s
       retries: 3
       start_period: 30s

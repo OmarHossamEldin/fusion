@@ -18,9 +18,10 @@ services:
       NODE_ENV: 'development'
       GETHUB_USER: "user@example.com"
       GETHUB_PASSWORD: "2UMXe<NPaaJm7uL*"
-
     volumes:
       - ./:/var/www
+      - /var/www/node_modules
+      - /var/www/build
     working_dir: /var/www
     ports:
       - "3000:3000"

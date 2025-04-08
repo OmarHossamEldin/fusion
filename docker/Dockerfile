@@ -14,8 +14,6 @@ COPY . .
 
 RUN npm install
 
-RUN chmod -R 777 ./*
-
 RUN npm run build
 
 EXPOSE 3000

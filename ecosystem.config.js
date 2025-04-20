@@ -8,7 +8,7 @@ module.exports = {
     {
       name: 'fusionDevelop',
       script: 'npm',
-      args: 'run develop',
+      args: 'run develop --debug',
       watch: ['src'],
       ignore_watch: [
         'node_modules',

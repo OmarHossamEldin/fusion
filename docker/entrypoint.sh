@@ -1,5 +1,9 @@
 #!/bin/bash
 
+npm install
+
+npm run build
+
 echo "extract values from environment variables .env file ..."
 envsubst < /var/www/.env.example > /var/www/.env
 

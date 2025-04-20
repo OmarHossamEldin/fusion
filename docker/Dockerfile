@@ -12,9 +12,6 @@ RUN npm install -g pm2 && pm2 startup
 WORKDIR /var/www
 COPY . .
 
-RUN npm install
-
-RUN npm run build
 
 EXPOSE 3000
 

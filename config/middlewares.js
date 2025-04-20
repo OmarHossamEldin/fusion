@@ -6,10 +6,10 @@ module.exports = [
     config: {
       contentSecurityPolicy: {
         directives: {
-          'connect-src': ["'self'", 'http:', 'https:'],
+          'connect-src': ["'self'", 'http:', 'https:','ws:', 'ws://127.0.0.1:5173'],
           'img-src': ["'self'", 'data:', 'blob:', 'http:', 'https:'],
           'media-src': ["'self'", 'data:', 'blob:', 'http:', 'https:'],
-          'script-src': ["'self'", 'http:', 'https:'],
+          'script-src': ["'self'", 'http:', 'https:', "'unsafe-eval'"],
           'frame-src': ["'self'", 'http:', 'https:'],
         },
       },
@@ -18,18 +18,10 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
-      origin: '*', //change it to frontend domainname in production
+      origin: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: [
-        'Content-Type',
-        'Authorization',
-        'Access-Control-Allow-Origin',
-        'Accept-Language',
-        'Accept-Encoding',
-        'Accept'
-      ],
-      keepHeaderOnError: true,
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'Referer', 'User-Agent', '*'],
+      keepHeaderOnError: false,
     },
   },
   'strapi::poweredBy',
